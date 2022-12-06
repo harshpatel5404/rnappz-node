@@ -7,9 +7,11 @@ const dotenv = require('dotenv');
 
 const APP_ID = "b5f0a556875747a7a39aa9b75246e76d"
 const APP_CERTIFICATE = "20141a8c96c145f297c3128c4d728984"
+var port = 3000 || process.env.PORT
 
-
-
+app.get("/demo", (req,res)=>{
+  res.send("demo start....");
+})
 
   
 const nocache = (_, resp, next) => {
@@ -64,6 +66,6 @@ const nocache = (_, resp, next) => {
 
 app.get('/rtc/:channel/:role/:tokentype/:uid', nocache, generateRTCToken)
 
-app.listen(3000, () => {
- console.log("Server running on port 3000");
+app.listen(port, () => {
+ console.log('Server running on ${port}');
 });
